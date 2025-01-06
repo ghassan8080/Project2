@@ -101,7 +101,7 @@ resource "aws_security_group" "jenkins_sg" {
 #5A- Create the Key Local and attach to the instance.
 resource "aws_key_pair" "jenkins-key" {
   key_name   = "jenkins-key"
-  public_key = file("~/.ssh/id_rsa.pub")
+ # public_key = file("~/.ssh/id_rsa.pub")
 }
 # 5B- This data store is holding the most recent ubuntu 20.04 image
 data "aws_ami" "ubuntu" {
