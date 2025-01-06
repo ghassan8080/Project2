@@ -1,7 +1,7 @@
 # Configure the AWS Provider
 provider "aws" {
   region  = "us-east-1"
-  profile = "dev_admin" # please provide your profile name
+  profile = "terraform_dev" # please provide your profile name
 }
 
 # 1- Define the VPC 
