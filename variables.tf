@@ -21,7 +21,7 @@ variable "public_subnet_cidr" {
 }
 
 variable "my_ip" {
-  description = "my ip address"
+  description = "185.107.56.42"
   type        = string
   sensitive   = true
 }
