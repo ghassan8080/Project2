@@ -99,9 +99,9 @@ resource "aws_security_group" "jenkins_sg" {
 }
 # 5- Create the Jenkins EC2 instance, add the Jenkins installation to its user data and attach to it Elastic IP.
 #5A- Create the Key Local and attach to the instance.
-resource "aws_key_pair" "MyKey_SSH" {
-  key_name   = "MyKey"
-  public_key = file("~/.ssh/MyKey.pub")
+resource "aws_key_pair" "jenkins-key" {
+  key_name   = "jenkins-key"
+  public_key = file("~/.ssh/id_rsa.pub")
 }
 # 5B- This data store is holding the most recent ubuntu 20.04 image
 data "aws_ami" "ubuntu" {
@@ -124,7 +124,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "jenkins_instance" {
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = "t2.micro"
-  key_name               = "MyKey"
+  key_name               = "jenkins-key"
   availability_zone      = data.aws_availability_zones.available_zones.names[0]
   vpc_security_group_ids = [aws_security_group.jenkins_sg.id]
   subnet_id              = aws_subnet.public_subnet.id
